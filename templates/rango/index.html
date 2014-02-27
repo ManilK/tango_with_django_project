@@ -7,8 +7,7 @@
 	</head>
 	
 	<body>
-		<h1>Rango says...hello world!</h1>
-		
+		<h1>Top Categories</h1>
 		{% if categories %}
 			<ul>
 				{% for category in categories %}
@@ -21,6 +20,24 @@
 			<strong>There are no categories present.</strong>
 		{% endif %}
 		
+		</br></br>
+		<h1>Top Pages</h1>
+		{% if pages %}
+			<ul>
+				{% for page in pages %}
+				<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<strong>There are no Pages!</strong>
+		{% endif %}
+		
+		</br></br>
+		
+		<a href="/rango/add_category/">Add a New Category</a>
+		
 		<a href="/rango/about/">About</a>
 	</body>
+	</br></br>
+	
 </html>
