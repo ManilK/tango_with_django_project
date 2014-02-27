@@ -4,8 +4,8 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from rango.models import Category, Page, UserForm, UserProfileForm
-from rango.forms import CategoryForm, PageForm
+from rango.models import Category, Page
+from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 import os
 
 def encode_url(str):
