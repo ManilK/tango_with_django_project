@@ -1,14 +1,13 @@
-#Manil Kakkad
-# Create your views here.
-
-from django.http import HttpResponse
+import os
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect, HttpResponse
-import os
+
 
 def encode_url(str):
     return str.replace(' ', '_')
@@ -213,3 +212,14 @@ def user_login(request):
     
     else:
         return render_to_response('rango/login.html', {}, context)
+    
+@login_required    
+def user_logout(request):
+    logout(request)
+    
+    return HttpResponseRedirect('/rango/')
+
+@login_required
+def restricted(request):
+    return HttpResponse("since you're logged in, you can see this test!")
+
