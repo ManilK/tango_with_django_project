@@ -46,7 +46,7 @@ def index(request):
 
 def about(request):
     context = RequestContext(request)
-    return render_to_response('rango/about.html',context)
+    return render_to_response('rango/about.html', {}, context)
 
 def category(request, category_name_url):
     # Request our context from the request passed to us.
@@ -226,5 +226,5 @@ def user_logout(request):
 def restricted(request):
     context = RequestContext(request)
     
-    return render_to_response('rango/restricted.html',context)
+    return render_to_response('rango/restricted.html', {}, context)
 
