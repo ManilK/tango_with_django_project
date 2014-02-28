@@ -115,8 +115,11 @@ def add_category(request):
 def add_page(request, category_name_url):
     context = RequestContext(request)
     
+#    if not user.is_authenticated:
+ #       return HttpResponseRedirect('rango/login.html')
+    
     category_name = decode_url(category_name_url)
-    if request.method == 'POST':
+    if (request.method == 'POST'):
         form = PageForm(request.POST)
         
         if form.is_valid():
@@ -221,5 +224,7 @@ def user_logout(request):
 
 @login_required
 def restricted(request):
-    return HttpResponse("since you're logged in, you can see this test!")
+    context = RequestContext(request)
+    
+    return render_to_response('rango/restricted.html',context)
 
